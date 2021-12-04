@@ -1,5 +1,9 @@
 # Advent of Code 2021
 
+Python version `3.10.0`
+
 ## Unit testing
 
-Run: `python -m unittest`
+### Run all tests:
+
+`python3 -m unittest`
