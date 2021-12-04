@@ -1,4 +1,3 @@
-import numpy as np
 from utils import importTXTFile
 
 data = importTXTFile('day01.txt', int)
