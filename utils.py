@@ -6,4 +6,4 @@ def importTXTFile(filename, dtype=int):
 
 
 def transpose(matrix):
-    return list(zip(*matrix))
+    return list([list(a) for a in zip(*matrix)])

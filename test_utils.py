@@ -10,7 +10,7 @@ class TestUtils(unittest.TestCase):
 
     def test_transpose(self):
         og = [[0, 0, 0], [1, 1, 1], [2, 2, 2]]
-        transposed = [(0, 1, 2), (0, 1, 2), (0, 1, 2)]
+        transposed = [[0, 1, 2], [0, 1, 2], [0, 1, 2]]
         self.assertEqual(transpose(og), transposed)
 
 
