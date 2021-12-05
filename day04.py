@@ -77,5 +77,23 @@ def findWinningScore(data):
     return computeScore(boards[winBoardIndex], calledNumbers)
 
 
+def findLastPlaceScore(data):
+    boards = extractBoards(data)
+    sequence = extractFullSequence(data)
+    calledNumbers = []
+    winBoardIndex = False
+    lastBoard = False
+    while len(boards) > 0:
+        calledNumbers.append(sequence.pop(0))
+        winBoardIndex = checkBoardsForBingo(boards, calledNumbers)
+        while winBoardIndex is not False:
+            # Remove win board from list
+            lastBoard = boards.pop(winBoardIndex)
+            # Check if there are any other joint winners this round
+            winBoardIndex = checkBoardsForBingo(boards, calledNumbers)
+    # Only one board should remain
+    return computeScore(lastBoard, calledNumbers)
+
+
 print(f"Day04a: {findWinningScore(data)}")
-# print(f"Day04b: {}")
+print(f"Day04b: {findLastPlaceScore(data)}")

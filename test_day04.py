@@ -7,6 +7,7 @@ from day04 import (
     boardHasBingo,
     checkBoardsForBingo,
     findWinningScore,
+    findLastPlaceScore,
 )
 
 with open("day04-example.txt", "r") as f:
@@ -79,6 +80,12 @@ class TestDay04(unittest.TestCase):
 
     def test_findWinningScore_RealAnswer(self):
         self.assertEqual(findWinningScore(realdata), 82440)  # answer day04a confirmed
+
+    def test_findLastPlaceScore(self):
+        self.assertEqual(findLastPlaceScore(exampledata), 1924)
+
+    def test_findLastPlaceScore_RealAnswer(self):
+        self.assertEqual(findLastPlaceScore(realdata), 20774)  # answer day04b confirmed
 
 
 if __name__ == "__main__":
