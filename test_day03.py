@@ -2,7 +2,6 @@ import unittest
 
 from day03 import (
     formatData,
-    transpose,
     mostCommonBitNumber,
     leastCommonBitNumber,
     powerConsumption,
@@ -28,11 +27,6 @@ class TestDay03(unittest.TestCase):
         # fmt:on
         self.assertEqual(formatData(og1), formatted)
         self.assertEqual(formatData(og2), formatted)
-
-    def test_transpose(self):
-        og = [[0, 0, 0], [1, 1, 1], [2, 2, 2]]
-        transposed = [(0, 1, 2), (0, 1, 2), (0, 1, 2)]
-        self.assertEqual(transpose(og), transposed)
 
     def test_mostCommonBitNumber(self):
         self.assertEqual(mostCommonBitNumber(exampledata), "10110")

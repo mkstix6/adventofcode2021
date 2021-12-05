@@ -1,4 +1,5 @@
 from collections import Counter
+from utils import transpose
 
 with open("day03.txt", "r") as f:
     data = f.readlines()
@@ -6,10 +7,6 @@ with open("day03.txt", "r") as f:
 
 def formatData(data):
     return [[int(y) for y in word.strip()] for word in data]
-
-
-def transpose(matrix):
-    return list(zip(*matrix))
 
 
 def mostCommonBitNumber(data):
