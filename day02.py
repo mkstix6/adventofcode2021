@@ -19,6 +19,28 @@ def submarineDestination(data):
     return position
 
 
+def submarineDestinationWithAim(data):
+    # setup
+    position = {"horizontal": 0, "depth": 0}
+    aim = 0
+    # process data
+    for line in data:
+        instruction, value = line.split(" ")
+        value = int(value)
+        if instruction == "forward":
+            position["horizontal"] += value
+            position["depth"] += value * aim
+        if instruction == "up":
+            aim -= value
+        if instruction == "down":
+            aim += value
+    # result
+    return position
+
+
 print(
     f"Day02a: {submarineDestination(data)['horizontal'] * submarineDestination(data)['depth']}"
+)
+print(
+    f"Day02b: {submarineDestinationWithAim(data)['horizontal'] * submarineDestinationWithAim(data)['depth']}"
 )
