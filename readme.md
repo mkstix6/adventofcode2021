@@ -4,6 +4,9 @@ Python version `3.10.0`
 
 ## Unit testing
 
-### Run all tests:
+### Scripts
 
-`python3 -m unittest`
+- Run all tests
+  - `python3 -m unittest`
+- Run a single test file:
+  - `python3 -m unittest test_dayXX`
