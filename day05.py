@@ -64,6 +64,38 @@ def fieldFromInstructions(instructions):
     return field
 
 
+def fieldFromInstructionsWithDiagonals(instructions):
+    xrange, yrange = fieldSize(instructions)
+    field = constructEmptyField(xrange, yrange)
+    for instruction in instructions:
+        x1, y1, x2, y2 = instruction
+        if x1 == x2:
+            # sort y values ascending
+            if y1 > y2:
+                y1, y2 = y2, y1
+            # insert into field
+            for y in range(y1, y2 + 1):
+                field[y][x1] += 1
+        elif y1 == y2:
+            # sort x values ascending
+            if x1 > x2:
+                x1, x2 = x2, x1
+            # insert into field
+            for x in range(x1, x2 + 1):
+                field[y1][x] += 1
+        else:
+            # conditionally sort the points so we only have to go right-up or right-down
+            if x1 > x2:
+                x1, x2 = x2, x1
+                y1, y2 = y2, y1
+            for i in range(0, x2 - x1 + 1):
+                if y1 < y2:
+                    field[y1 + i][x1 + i] += 1
+                if y1 > y2:
+                    field[y1 - i][x1 + i] += 1
+    return field
+
+
 # At how many points do at least two lines overlap?
 def countDoublePlusPoints(field):
     count = 0
@@ -80,8 +112,14 @@ def analyseInputForDoublePoints(data):
     return countDoublePlusPoints(fieldLayout)
 
 
+def analyseInputForDoublePointsWithDiagonals(data):
+    instructions = ingestInput(data)
+    fieldLayout = fieldFromInstructionsWithDiagonals(instructions)
+    return countDoublePlusPoints(fieldLayout)
+
+
 with open("day05-input.txt", "r") as f:
     data = f.readlines()
 
-print(f"Day05a: {analyseInputForDoublePoints(data)}")
-# print(f"Day05b: {}")
+print(f"Day05a: {analyseInputForDoublePoints(data)}")  # 5306
+print(f"Day05b: {analyseInputForDoublePointsWithDiagonals(data)}")  # 17787
