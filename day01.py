@@ -1,6 +1,6 @@
 from utils import importTXTFile
 
-data = importTXTFile("day01.txt", int)
+data = importTXTFile("day01-input.txt", int)
 
 
 def countDepthIncreases(data):

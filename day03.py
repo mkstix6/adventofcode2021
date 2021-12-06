@@ -1,7 +1,7 @@
 from collections import Counter
 from utils import transpose
 
-with open("day03.txt", "r") as f:
+with open("day03-input.txt", "r") as f:
     data = f.readlines()
 
 

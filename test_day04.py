@@ -13,7 +13,7 @@ from day04 import (
 with open("day04-example.txt", "r") as f:
     exampledata = f.readlines()
 
-with open("day04.txt", "r") as f:
+with open("day04-input.txt", "r") as f:
     realdata = f.readlines()
 
 

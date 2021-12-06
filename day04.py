@@ -2,7 +2,7 @@ import re
 from functools import reduce
 from utils import transpose
 
-with open("day04.txt", "r") as f:
+with open("day04-input.txt", "r") as f:
     data = f.readlines()
 
 
