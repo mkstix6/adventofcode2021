@@ -19,5 +19,24 @@ def leastFuel(data):
     return lowest
 
 
+def leastFuelWithResistance(data):
+    minX = min(data)
+    maxX = max(data)
+    iterations = []
+    for alignPoint in range(minX, maxX):
+        fuelConsumption = []
+        print(f"Day07b: {round(100*len(iterations)/(maxX-minX),1)}%", end="\r")
+        for i, x in enumerate(data):
+            fuelConsumption.append(0)
+            distance = abs(alignPoint - x)
+            for step in range(distance):
+                fuelConsumption[i] += step + 1
+        iterations.append(fuelConsumption)
+
+    totals = [sum(iteration) for iteration in iterations]
+    lowest = min(totals)
+    return lowest
+
+
 print(f"Day07a: {leastFuel(data)}")  # 337833
-# print(f"Day07b: {leastFuel(data)}")  # ???
+print(f"Day07b: {leastFuelWithResistance(data)}")  # 96678050
