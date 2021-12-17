@@ -28,7 +28,9 @@ def extractBoards(data):
 def computeScore(board, sequence) -> int:
     # sum of all unmarked numbers on that board
     remainingNums = board.copy()
+    # Flatten the board arrays
     remainingNums = reduce(lambda acc, curr: acc + curr, remainingNums)
+    # Remove called numbers from board
     for num in sequence:
         if num in remainingNums:
             remainingNums.remove(num)
