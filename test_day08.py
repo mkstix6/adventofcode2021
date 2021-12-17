@@ -1,6 +1,6 @@
 import unittest
 
-from day08 import countOutputFor1478
+from day08 import countOutputFor1478, sumOutputValues
 
 # fmt:off
 exampleInput = [
@@ -19,6 +19,9 @@ exampleInput = [
 class TestDay08(unittest.TestCase):
     def test_countOutputFor1478(self):
         self.assertEqual(countOutputFor1478(exampleInput), 26)
+
+    def test_sumOutputValues(self):
+        self.assertEqual(sumOutputValues(exampleInput), 61229)
 
 
 if __name__ == "__main__":
