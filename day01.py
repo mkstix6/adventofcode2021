@@ -25,5 +25,6 @@ def countDepthIncreasesInThrees(data):
     return count
 
 
-print(f"Day01a: {countDepthIncreases(data)}")
-print(f"Day01b: {countDepthIncreasesInThrees(data)}")
+if __name__ == "__main__":
+    print(f"Day01a: {countDepthIncreases(data)}")
+    print(f"Day01b: {countDepthIncreasesInThrees(data)}")

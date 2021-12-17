@@ -38,9 +38,10 @@ def submarineDestinationWithAim(data):
     return position
 
 
-print(
-    f"Day02a: {submarineDestination(data)['horizontal'] * submarineDestination(data)['depth']}"
-)
-print(
-    f"Day02b: {submarineDestinationWithAim(data)['horizontal'] * submarineDestinationWithAim(data)['depth']}"
-)
+if __name__ == "__main__":
+    print(
+        f"Day02a: {submarineDestination(data)['horizontal'] * submarineDestination(data)['depth']}"
+    )
+    print(
+        f"Day02b: {submarineDestinationWithAim(data)['horizontal'] * submarineDestinationWithAim(data)['depth']}"
+    )

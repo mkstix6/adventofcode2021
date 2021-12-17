@@ -72,5 +72,6 @@ def lifeSupportRating(data) -> int:
     return int(o2GeneratorRating(data), 2) * int(co2ScrubberRating(data), 2)
 
 
-print(f"Day03a: {powerConsumption(data)}")
-print(f"Day03b: {lifeSupportRating(data)}")
+if __name__ == "__main__":
+    print(f"Day03a: {powerConsumption(data)}")
+    print(f"Day03b: {lifeSupportRating(data)}")

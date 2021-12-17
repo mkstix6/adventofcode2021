@@ -33,5 +33,6 @@ def leastFuelWithResistance(data):
     return lowest
 
 
-print(f"Day07a: {leastFuel(data)}")  # 337833
-print(f"Day07b: {leastFuelWithResistance(data)}")  # 96678050
+if __name__ == "__main__":
+    print(f"Day07a: {leastFuel(data)}")  # 337833
+    print(f"Day07b: {leastFuelWithResistance(data)}")  # 96678050

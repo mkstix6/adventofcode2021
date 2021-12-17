@@ -121,5 +121,6 @@ def analyseInputForDoublePointsWithDiagonals(data):
 with open("day05-input.txt", "r") as f:
     data = f.readlines()
 
-print(f"Day05a: {analyseInputForDoublePoints(data)}")  # 5306
-print(f"Day05b: {analyseInputForDoublePointsWithDiagonals(data)}")  # 17787
+if __name__ == "__main__":
+    print(f"Day05a: {analyseInputForDoublePoints(data)}")  # 5306
+    print(f"Day05b: {analyseInputForDoublePointsWithDiagonals(data)}")  # 17787

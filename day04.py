@@ -97,5 +97,6 @@ def findLastPlaceScore(data):
     return computeScore(lastBoard, calledNumbers)
 
 
-print(f"Day04a: {findWinningScore(data)}")
-print(f"Day04b: {findLastPlaceScore(data)}")
+if __name__ == "__main__":
+    print(f"Day04a: {findWinningScore(data)}")
+    print(f"Day04b: {findLastPlaceScore(data)}")

@@ -129,7 +129,8 @@ def sumOutputValues(data):
     return total
 
 
-# In the output values, how many times do digits 1, 4, 7, or 8 appear?
-print(f"Day08a: {countOutputFor1478(data)}")  # 532
-# What do you get if you add up all of the output values?
-print(f"Day08b: {sumOutputValues(data)}")  # ???
+if __name__ == "__main__":
+    # In the output values, how many times do digits 1, 4, 7, or 8 appear?
+    print(f"Day08a: {countOutputFor1478(data)}")  # 532
+    # What do you get if you add up all of the output values?
+    print(f"Day08b: {sumOutputValues(data)}")  # ???

@@ -49,7 +49,8 @@ fishies.runSim(80)
 fishies256 = BigFishSim(input)
 fishies256.runSim(256)
 
-# fmt:off
-print(f"Day06a: {fishies.totalFish}")  # 391671 # confirmed answer for day06a
-print(f"Day06b: {fishies256.totalFish()}")  # 1754000560399 # confirmed answer for day06b
-# fmt:on
+if __name__ == "__main__":
+    # fmt:off
+    print(f"Day06a: {fishies.totalFish}")  # 391671 # confirmed answer for day06a
+    print(f"Day06b: {fishies256.totalFish()}")  # 1754000560399 # confirmed answer for day06b
+    # fmt:on
