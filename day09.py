@@ -25,7 +25,13 @@ def sumOfTheRiskLevelsOfAllLowPoints(data):
     return sum
 
 
+def multiplyTogetherTheSizesOfTheThreeLargestBasins(data):
+    largest = [0, 0, 0]
+
+    return sum(largest)
+
+
 # What is the sum of the risk levels of all low points on your heightmap?
 print(f"Day09a: {sumOfTheRiskLevelsOfAllLowPoints(data)}")  # 545
-#
-# print(f"Day09b: {xxx(data)}")  # ???
+# What do you get if you multiply together the sizes of the three largest basins?
+print(f"Day09b: {multiplyTogetherTheSizesOfTheThreeLargestBasins(data)}")  # ???
