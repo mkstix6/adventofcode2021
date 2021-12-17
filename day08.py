@@ -26,10 +26,11 @@ def countOutputFor1478(data):
         "7": 3,
         "8": 7,
     }
-    for [input, output] in [[x.split(" ") for x in row.split(" | ")] for row in data]:
-        # Sort all strings
-        input = ["".join(sorted(x)) for x in input]
-        output = ["".join(sorted(x)) for x in output]
+    # Each row of data extract the input and output parts then sort every string's characters alphabetically
+    for [input, output] in [
+        [["".join(sorted(z)) for z in x.split(" ")] for x in row.split(" | ")]
+        for row in data
+    ]:
         charStrings = uniques.copy()
         for name, count in charStrings.items():
             for x in input:
