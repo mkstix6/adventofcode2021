@@ -4,14 +4,16 @@ data = [x.strip() for x in data]
 
 openingChars = ["(", "[", "{", "<"]
 closingChars = [")", "]", "}", ">"]
+charsMap = {"(": ")", "[": "]", "{": "}", "<": ">"}
+autoCompletePoints = {")": 1, "]": 2, "}": 3, ">": 4}
 
 
-def extractCorruptInput(data):
-    goodLines = []
-    corruptLines = []
+def extractCorruptInput(data: list[str]) -> tuple[list[str], list[str]]:
+    incompleteLines: list[str] = []
+    corruptLines: list[str] = []
     for line in data:
         isCorrupt = False
-        stack = []
+        stack: list[str] = []
         for char in line:
             if char in openingChars:
                 stack.append(char)
@@ -22,8 +24,8 @@ def extractCorruptInput(data):
         if isCorrupt:
             corruptLines.append(line)
         else:
-            goodLines.append(line)
-    return goodLines, corruptLines
+            incompleteLines.append(line)
+    return incompleteLines, corruptLines
 
 
 # first illegal character
@@ -31,16 +33,16 @@ def extractCorruptInput(data):
 # ]: 57 points.
 # }: 1197 points.
 # >: 25137 points.
-def corruptLineScore(line):
+def corruptLineScore(line: str) -> tuple[int, str, str]:
     score = 0
     expectedChar = "a"
     badChar = "*"
-    stack = []
+    stack: list[str] = []
     for char in line:
         if char in openingChars:
             stack.append(char)
         if char in closingChars:
-            openedWith = stack.pop()
+            openedWith: str = stack.pop()
             if openingChars.index(openedWith) != closingChars.index(char):
                 expectedChar = closingChars[openingChars.index(openedWith)]
                 badChar = char
@@ -56,17 +58,58 @@ def corruptLineScore(line):
     return score, expectedChar, badChar
 
 
-def day10a(data):
-    good, corrupt = extractCorruptInput(data)
-    # scores = [[tuple[0] for tuple in corruptLineScore(line)] for line in corrupt]
-    scores = []
+def day10a(data: list[str]) -> int:
+    corrupt: list[str] = extractCorruptInput(data)[1]
+    scores: list[int] = []
     for line in corrupt:
         scores.append(corruptLineScore(line)[0])
     return sum(scores)
 
 
+def closingCharacters(line: str) -> str:
+    # [({(<(())[]>[[{[]{<()<>> -> }}]])})]
+    stack: list[str] = []
+    unpaired: list[str] = []
+    for char in line:
+        if char in charsMap.keys():
+            stack.append(charsMap[char])
+        else:
+            if char == stack[-1]:
+                stack.pop()
+            else:
+                unpaired.append(charsMap[char])
+    stack.reverse()
+    return "".join(stack)
+
+
+# for each character, multiply the total score by 5 and
+# then increase the total score by the point value given
+# for the character in the following table:
+# ): 1 point.
+# ]: 2 points.
+# }: 3 points.
+# >: 4 points.
+def autoCompleteScore(scorestring: str) -> int:
+    score: int = 0
+    for char in scorestring:
+        score *= 5
+        score += autoCompletePoints[char]
+    return score
+
+
+def day10b(data: list[str]) -> int:
+    incomplete: list[str] = extractCorruptInput(data)[0]
+    scores: list[int] = [
+        autoCompleteScore(closingCharacters(line)) for line in incomplete
+    ]
+    # sort all of the scores and then take the middle score
+    scores.sort()
+    middleScore: int = scores[len(scores) // 2]
+    return middleScore
+
+
 if __name__ == "__main__":
     # What is the total syntax error score for those errors?
     print(f"Day10a: {day10a(data)}")  # 369105
-    # ###
-    # print(f"Day10b: {XXX(data)}")  # ???
+    # What is the middle autocomplete score?
+    print(f"Day10b: {day10b(data)}")  # 3999363569
