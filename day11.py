@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 # Import file
 with open("day11-input.txt", "r") as f:
     data = f.readlines()
@@ -13,7 +15,7 @@ def gridHasCharged(grid) -> bool:
 
 
 def step(grid: list[list[int]]) -> tuple[list[list[int]], int]:
-    grid = grid.copy()
+    grid = deepcopy(grid)
     flashCount = 0
     # Increase all by 1
     for y in range(len(grid)):
@@ -24,7 +26,7 @@ def step(grid: list[list[int]]) -> tuple[list[list[int]], int]:
         for y in range(len(grid)):
             for x in range(len(grid[0])):
                 if grid[y][x] > 9:
-                    grid[y][x] = -99
+                    grid[y][x] = -9999
                     flashCount += 1
                     for (dx, dy) in neighbours:
                         try:
@@ -46,12 +48,24 @@ def day11a(grid: list[list[int]]) -> int:
     for i in range(doSteps):
         grid, newFlashes = step(grid)
         flashCount += newFlashes
-
     return flashCount
 
 
+def isAllZero(grid: list[list[int]]) -> bool:
+    flat = [item for row in grid for item in row if item != 0]
+    return len(flat) == 0
+
+
+def day11b(grid: list[list[int]]) -> int:
+    stepCount = 0
+    while not isAllZero(grid):
+        grid, _ = step(grid)
+        stepCount += 1
+    return stepCount
+
+
 if __name__ == "__main__":
-    # How many total flashes are there after 110 steps?
-    print(f"Day11a: {day11a(data)}")  # ???
-    # ???
-    # print(f"Day11b: {day11b(data)}")  # ???
+    # How many total flashes are there after 100 steps?
+    print(f"Day11a: {day11a(data)}")  # 1665
+    # What is the first step during which all octopuses flash?
+    print(f"Day11b: {day11b(data)}")  # 235
