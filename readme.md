@@ -2,6 +2,14 @@
 
 Python version `3.10.0`
 
+So I'm using this year's Advent of Code challenges to learn Python (usually I'm a JavaScript front end web dev). I'm picking up:
+
+- basic Python
+- list comprehensions
+- unit testing
+- type hinting code
+- setting up a decent VS Code Python environment with auto-formatting etc…
+
 ## Unit testing
 
 ### Scripts
