@@ -6,6 +6,7 @@ So I'm using this year's Advent of Code challenges to learn Python (usually I'm 
 
 - basic Python
 - list comprehensions
+- copy vs deepcopy
 - unit testing
 - type hinting code
 - setting up a decent VS Code Python environment with auto-formatting etc…
