@@ -8,7 +8,7 @@ charsMap = {"(": ")", "[": "]", "{": "}", "<": ">"}
 autoCompletePoints = {")": 1, "]": 2, "}": 3, ">": 4}
 
 
-def extractCorruptInput(data: list[str]) -> tuple[list[str], list[str]]:
+def separateIncompleteCorrupt(data: list[str]) -> tuple[list[str], list[str]]:
     incompleteLines: list[str] = []
     corruptLines: list[str] = []
     for line in data:
@@ -59,7 +59,7 @@ def corruptLineScore(line: str) -> tuple[int, str, str]:
 
 
 def day10a(data: list[str]) -> int:
-    corrupt: list[str] = extractCorruptInput(data)[1]
+    corrupt: list[str] = separateIncompleteCorrupt(data)[1]
     scores: list[int] = []
     for line in corrupt:
         scores.append(corruptLineScore(line)[0])
@@ -98,7 +98,7 @@ def autoCompleteScore(scorestring: str) -> int:
 
 
 def day10b(data: list[str]) -> int:
-    incomplete: list[str] = extractCorruptInput(data)[0]
+    incomplete: list[str] = separateIncompleteCorrupt(data)[0]
     scores: list[int] = [
         autoCompleteScore(closingCharacters(line)) for line in incomplete
     ]
