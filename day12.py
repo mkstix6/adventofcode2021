@@ -67,6 +67,6 @@ def day12b(edges: InputDataType) -> int:
 
 if __name__ == "__main__":
     # How many paths through this cave system are there that visit small caves at most once?
-    print(f"Day12a: {day12a(data)}")  # ???
+    print(f"Day12a: {day12a(data)}")  # 5920
     # ???
     print(f"Day12b: {day12b(data)}")  # ???
